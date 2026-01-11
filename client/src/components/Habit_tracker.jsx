@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function HabitTracker() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
