@@ -173,6 +173,16 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", uptime: process.uptime() });
 });
 
+app.get("/health/db", async (req, res) => {
+  try {
+    const result = await db.query("SELECT 1");
+    res.json({ db: "connected" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ db: "error", error: err.message });
+  }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
